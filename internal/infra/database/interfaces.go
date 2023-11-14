@@ -5,6 +5,14 @@ import (
 )
 
 type UserInterface interface {
-	create(user *entities.User) (*entities.User, error)
-	findByEmail(email string) (*entities.User, error)
+	Create(user *entities.User) (*entities.User, error)
+	FindByEmail(email string) (*entities.User, error)
+}
+
+type ProductInterface interface {
+	Create(product *entities.Product) error
+	FindAll(page, limit int, sort string) (*[]entities.Product, error)
+	FindByID(ID string) (*entities.Product, error)
+	Update(product *entities.Product) error
+	Delete(ID string) error
 }

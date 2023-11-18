@@ -1,7 +1,30 @@
+Download extension REST Client
+###
 POST http://localhost:8000/products
 Content-Type: application/json
 
 {
-  "name": "camiseta",
-  "price": 10.0
+  "name": "casaco",
+  "price": 70.0
 }
+
+###
+GET http://localhost:8000/products/349ac6ee-b188-4065-a56b-4624384c4380
+Content-Type: application/json
+
+###
+PUT http://localhost:8000/products/349ac6ee-b188-4065-a56b-4624384c4380
+Content-Type: application/json
+
+{
+  "name": "jaqueta",
+  "price": 200.0
+}
+
+###
+DELETE http://localhost:8000/products/f9f57720-ee77-4193-b347-6f0c48fc1eae
+Content-Type: application/json
+
+###
+GET http://localhost:8000/products
+Content-Type: application/json

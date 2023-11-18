@@ -3,6 +3,8 @@ package main
 import (
 	"net/http"
 
+	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 	"github.com/gurtinho/go/api/configs"
 	"github.com/gurtinho/go/api/internal/entities"
 	"github.com/gurtinho/go/api/internal/infra/database"
@@ -26,8 +28,14 @@ func main() {
 	productDB := database.NewProduct(db)
 	productHandler := handlers.NewProductHandler(productDB)
 
-	// handlers
-	http.HandleFunc("/products", productHandler.CreateProduct)
+	// handlers with routing 
+	r := chi.NewRouter()
+	r.Use(middleware.Logger)
+	r.Post("/products", productHandler.CreateProduct)
+	r.Get("/products", productHandler.GetProducts)
+	r.Get("/products/{id}", productHandler.GetProduct)
+	r.Put("/products/{id}", productHandler.UpdateProduct)
+	r.Delete("/products/{id}", productHandler.DeleteProduct)
 
-	http.ListenAndServe(":8000", nil)
+	http.ListenAndServe(":8000", r)
 }

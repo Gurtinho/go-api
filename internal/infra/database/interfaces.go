@@ -11,7 +11,7 @@ type UserInterface interface {
 
 type ProductInterface interface {
 	Create(product *entities.Product) error
-	FindAll(page, limit int, sort string) (*[]entities.Product, error)
+	FindAll(page, limit int, sort string) ([]entities.Product, error)
 	FindByID(ID string) (*entities.Product, error)
 	Update(product *entities.Product) error
 	Delete(ID string) error

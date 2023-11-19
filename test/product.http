@@ -13,11 +13,12 @@ GET http://localhost:8000/products/349ac6ee-b188-4065-a56b-4624384c4380
 Content-Type: application/json
 
 ###
-PUT http://localhost:8000/products/349ac6ee-b188-4065-a56b-4624384c4380
+PUT http://localhost:8000/products/b0b20206-cea2-4694-b97c-d5d46b23f65b
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDA0MDQ5NTQsInN1YiI6IjEwODdiYzg1LTI4MzUtNDZjOC1hNThlLWE4YzNhOTk0MWZhOCJ9.BahMFquSOnkWxh6WqUBZnr4ZBvL4ZKIXDk-dItB-ko4
 
 {
-  "name": "jaqueta",
+  "name": "calça jeans",
   "price": 200.0
 }
 

@@ -13,8 +13,31 @@ import (
 	"github.com/gurtinho/go/api/internal/infra/webserver/handlers"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	_ "github.com/gurtinho/go/api/docs"
+	httpSwagger "github.com/swaggo/http-swagger"
 )
 
+// @title           API
+// @version         1.0
+// @description     This is a sample server celler server.
+// @termsOfService  http://swagger.io/terms/
+
+// @contact.name   API Support
+// @contact.url    http://www.swagger.io/support
+// @contact.email  support@swagger.io
+
+// @license.name  Apache 2.0
+// @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host      localhost:8000
+// @BasePath  /
+
+// @securityDefinitions.apikey Bearer
+// @in header
+// @name Authorization
+
+// @externalDocs.description  OpenAPI
+// @externalDocs.url          https://swagger.io/resources/open-api/
 func main() {
 	configs, err := configs.LoadConfig("./cmd/server")
 	if err != nil {
@@ -53,7 +76,9 @@ func main() {
 	})
 
 	r.Post("/users", userHandler.CreateUser)
-	r.Post("/users/generate_token", userHandler.GetJWT)
+	r.Post("/users/generate-token", userHandler.GetJWT)
+
+	r.Get("/docs/*", httpSwagger.Handler(httpSwagger.URL("http://localhost:8000/docs/doc.json")))
 
 	http.ListenAndServe(":8000", r)
 }
